@@ -4,7 +4,7 @@ frappe.ui.form.on('Sales Invoice Item', {
 		let row = frappe.get_doc(cdt, cdn);
 
 		if (row.rate_per_kg) {
-			row.rate = row.rate_per_kg * row.weight * 1;
+			row.rate = (row.rate_per_kg * row.weight) / row.qty;
 			frm.refresh_field('items');
 		}
 
@@ -14,7 +14,7 @@ frappe.ui.form.on('Sales Invoice Item', {
 		let row = frappe.get_doc(cdt, cdn);
 
 		if (row.weight) {
-			row.rate = row.rate_per_kg * row.weight * 1;
+			row.rate = (row.rate_per_kg * row.weight) / row.qty;
 			frm.refresh_field('items');
 		}
 
